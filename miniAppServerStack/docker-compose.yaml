@@ -1,0 +1,97 @@
+version: '3.9'
+
+services:
+
+  mini_redis_app:
+    container_name: mini_redis_app
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '26379:6379'
+    command: redis-server --save 20 1
+    volumes:
+      - ./cache:/data
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  # 登陆/用户信息
+  mini_member_app:
+    container_name: mini_member_app
+    image: r2day/mini-member-api
+    depends_on:
+      - mini_redis_app
+    volumes:
+      - ./config/member.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  # 登陆/用户信息
+  mini_appearance_app:
+    container_name: mini_appearance_app
+    image: r2day/mini-appearance-api
+    depends_on:
+      - mini_redis_app
+    volumes:
+      - ./config/appearance.env:/app/.env
+      - ./data/bbs.json:/app/api/bbs/example.json
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  # 登陆/用户信息
+  mini_store_app:
+    container_name: mini_store_app
+    image: r2day/mini-store-api
+    depends_on:
+      - mini_redis_app
+    volumes:
+      - ./config/store.env:/app/.env
+      - ./data/store.json:/app/api/info/example.json
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  pay_app:
+    container_name: pay_app
+    image: r2day/pay-api
+    depends_on:
+      - mini_member_app
+    volumes:
+      - ./config/pay.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  mini_nginx_app:
+    container_name: mini_nginx_app
+    image: nginx:1.22.1
+    ports:
+      - "5580:80"
+    depends_on:
+      - pay_app
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - /etc/localtime:/etc/localtime:ro
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+# 同一个docker-compose.yaml 只需要在末尾声明一次即可
+networks:
+  share-network:
+    name: share-network
