@@ -17,7 +17,7 @@ git clone https://github.com/r2day/deployments
 以下以开发环境为例子
 
 ```
-git checkout dev
+git clone --branch dev  https://github.com/r2day/deployments
 ```
 
 ## 该repo 涉及到用户配置密钥，因此只能短时授权git
