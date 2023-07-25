@@ -17,8 +17,16 @@ git clone https://github.com/r2day/deployments
 以下以开发环境为例子
 
 ```
+git --branch <branchname> <url>
 git checkout dev
 ```
 
 ## 该repo 涉及到用户配置密钥，因此只能短时授权git
 
+```
+cd <app>
+docker compose up -d
+docker compose ps
+docker compose down
+
+```
