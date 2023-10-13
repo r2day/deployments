@@ -97,6 +97,19 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
+  manage_store_center_app:
+    container_name: manage_store_center_app
+    image: r2day/store-center
+    depends_on:
+      - mini_redis_app
+    volumes:
+      - ./config/manage_store.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
 
   product_center_app:
     container_name: product_center_app
@@ -111,6 +124,20 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
+  manage_product_center_app:
+    container_name: manage_product_center_app
+    image: r2day/product-center
+    depends_on:
+      - mini_redis_app
+    volumes:
+      - ./config/manage_product.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
 
   order_center_app:
     container_name: order_center_app
@@ -119,6 +146,7 @@ services:
       - mini_redis_app
     volumes:
       - ./config/order_center.env:/app/.env
+      - ./logs/order_center/:/app/log  
     working_dir: "/app/"
     restart: on-failure:5
 
@@ -154,20 +182,20 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
-  pad_app:
-    container_name: pad_app
-    image: r2day/work-pad
-    ports:
-      - "8000:8000"
-    depends_on:
-      - order_center_app
-    volumes:
-      - ./config/pad.env:/app/.env
-    working_dir: "/app/"
-    restart: on-failure:5
-    # 需要使用到该数据库的都需要声明这个网络
-    networks:
-      - share-network
+        #  pad_app:
+        #    container_name: pad_app
+        #    image: r2day/work-pad
+        #    ports:
+        #      - "8000:8000"
+        #    depends_on:
+        #      - order_center_app
+        #    volumes:
+        #      - ./config/pad.env:/app/.env
+        #    working_dir: "/app/"
+        #    restart: on-failure:5
+        #    # 需要使用到该数据库的都需要声明这个网络
+        #    networks:
+        #      - share-network
   take_out_app:
     container_name: take_out_app
     image: r2day/take-out
@@ -184,6 +212,28 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
+   # 登陆/用户信息
+  manage_auth_app:
+    container_name: manage_auth_app
+    image: r2day/auth-api
+    depends_on:
+      - mini_mongo_app
+    volumes:
+      - ./config/auth.env:/app/.env
+      - ./config/init-data:/app/prepare
+    working_dir: "/app/"
+    restart: always
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+  manager_desk_app:
+    container_name: manager_desk_app
+    image: r2day/manager-desk
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
   mini_nginx_app:
     container_name: mini_nginx_app
     image: nginx:1.22.1
