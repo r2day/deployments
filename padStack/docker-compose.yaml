@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+
+  order_center_pad:
+    container_name: order_center_pad
+    image: r2day/order-center
+    volumes:
+      - ./config/order_center.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  pad_app:
+    container_name: pad_app
+    image: r2day/work-pad
+    ports:
+      - "8000:8000"
+    depends_on:
+      - order_center_app
+    volumes:
+      - ./config/pad.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+  pad_nginx_app:
+    container_name: pad_nginx_app
+    image: nginx:1.22.1
+    ports:
+      - "5680:80"
+    depends_on:
+      - pad_app
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - /etc/localtime:/etc/localtime:ro
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+

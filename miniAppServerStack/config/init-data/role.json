@@ -1,0 +1,181 @@
+{
+  "_id": {
+    "$oid": "64b4c0adb408a4d5d2ca979d"
+  },
+  "model": {
+    "meta": {
+      "merchant_id": "standalone",
+      "account_id": "AC1660971603875336192",
+      "created_at": "2023-07-17 12:16:45",
+      "updated_at": "2023-07-19 00:48:06",
+      "status": true,
+      "access_level": 8
+    }
+  },
+  "name": "super",
+  "desc": "",
+  "category": "646dd319a8cd2902283f0b79",
+  "image": "",
+  "toolbar": 3,
+  "apps": [
+  ],
+  "permissions_v2": [
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/user/access",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": false
+      }
+    },
+    {
+      "role_id": "64b7f8ef0e6dfeb057cb64a0",
+      "app_id": "64b7f8760e6dfeb057cb6499",
+      "path": "/v1/system/auth/user/permission/update",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": false
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/role/category",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/role/manage",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/user/profile",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": false
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/app/manage",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/app/category",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/role/config",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/admin/manage",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/admin/category",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": true
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/user/password/update",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": false
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/logs/signin",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": false
+      }
+    },
+    {
+      "role_id": "64b4c0adb408a4d5d2ca979d",
+      "app_id": "6445368f1674fd619e98c1b8",
+      "path": "/v1/system/auth/logs/operation",
+      "operation": {
+        "read": true,
+        "write": true,
+        "update": true,
+        "detail": true,
+        "delete": false
+      }
+    }
+  ]
+}
+

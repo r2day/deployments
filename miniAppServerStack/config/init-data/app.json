@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "6445368f1674fd619e98c1b8"
+  },
+  "meta": {
+    "merchant_id": "standalone",
+    "account_id": "AC1660971603875336192",
+    "created_at": "2023-05-23 19:31:04",
+    "updated_at": "2023-07-16 11:30:13",
+    "status": true,
+    "access_level": 2
+  },
+  "name": "权限中心",
+  "desc": "权限中心包含用户角色、账号、等级接口管理",
+  "access_level": 7,
+  "access_api": [
+    {
+      "path": "/v1/system/auth/role/manage",
+      "name": "角色管理",
+      "desc": "获取角色列表、管理列表",
+      "disable": false,
+      "can_view_detail": true,
+      "hide_on_sidebar": false
+    },
+    {
+      "path": "/v1/system/auth/admin/manage",
+      "name": "账号中心",
+      "desc": "获取账号列表",
+      "disable": false,
+      "can_view_detail": true,
+      "hide_on_sidebar": false
+    },
+    {
+      "path": "/v1/system/auth/app/manage",
+      "name": "应用中心",
+      "desc": "获取应用列表、普通管理员不会在导航栏中显示",
+      "disable": false,
+      "can_view_detail": true,
+      "hide_on_sidebar": false
+    },
+    {
+      "path": "/v1/system/auth/app/category",
+      "name": "应用分组",
+      "desc": "",
+      "disable": false,
+      "can_view_detail": true,
+      "hide_on_sidebar": false
+    },
+    {
+      "path": "/v1/system/auth/role/category",
+      "name": "角色分组",
+      "desc": "",
+      "disable": false,
+      "can_view_detail": true,
+      "hide_on_sidebar": false
+    },
+    {
+      "path": "/v1/system/auth/admin/category",
+      "name": "账号分组",
+      "desc": "",
+      "disable": false,
+      "can_view_detail": true,
+      "hide_on_sidebar": false
+    }
+  ],
+  "category": "646e2a2f4580dab0887c18be",
+  "model": {
+    "meta": {
+      "merchant_id": "",
+      "account_id": "",
+      "created_at": "",
+      "updated_at": "2023-07-19 11:06:50",
+      "status": false,
+      "access_level": 0
+    }
+  }
+},
+  {
+    "_id": {
+      "$oid": "64b6c12d9105c24d5f1587ca"
+    },
+    "model": {
+      "meta": {
+        "merchant_id": "standalone",
+        "account_id": "AC1680767786923593728",
+        "created_at": "2023-07-19 00:43:25",
+        "updated_at": "2023-07-19 11:07:55",
+        "status": true,
+        "access_level": 8
+      }
+    },
+    "name": "system",
+    "desc": "system api",
+    "category": "646e2a2f4580dab0887c18be",
+    "access_api": [
+      {
+        "path": "/v1/system/auth/user/access",
+        "name": "access",
+        "desc": "api access permissions manage",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      },
+      {
+        "path": "/v1/system/auth/user/permission/update",
+        "name": "permission",
+        "desc": "permission update",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      },
+      {
+        "path": "/v1/system/auth/logs/signin",
+        "name": "logs",
+        "desc": "sign in logs",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      },
+      {
+        "path": "/v1/system/auth/logs/operation",
+        "name": "logs",
+        "desc": "operations",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      },
+      {
+        "path": "/v1/system/auth/user/signin",
+        "name": "signin",
+        "desc": "sign in",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      },
+      {
+        "path": "/v1/system/auth/user/profile",
+        "name": "profile",
+        "desc": "user profile",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      },
+      {
+        "path": "/v1/system/auth/user/password/update",
+        "name": "password",
+        "desc": "password",
+        "disable": false,
+        "can_view_detail": true,
+        "hide_on_sidebar": true
+      }
+    ]
+  }]
