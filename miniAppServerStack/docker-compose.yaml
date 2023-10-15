@@ -86,7 +86,7 @@ services:
 
   store_center_app:
     container_name: store_center_app
-    image: r2day/store-center
+    image: r2day/store-center:dev
     depends_on:
       - mini_redis_app
     volumes:
@@ -99,7 +99,7 @@ services:
       - share-network
   manage_store_center_app:
     container_name: manage_store_center_app
-    image: r2day/store-center
+    image: r2day/store-center:dev
     depends_on:
       - mini_redis_app
     volumes:
@@ -113,7 +113,7 @@ services:
 
   product_center_app:
     container_name: product_center_app
-    image: r2day/product-center
+    image: r2day/product-center:dev
     depends_on:
       - mini_redis_app
     volumes:
@@ -141,7 +141,7 @@ services:
 
   order_center_app:
     container_name: order_center_app
-    image: r2day/order-center
+    image: r2day/order-center:dev
     depends_on:
       - mini_redis_app
     volumes:
@@ -155,7 +155,7 @@ services:
       - share-network
   member_center_app:
     container_name: member_center_app
-    image: r2day/member-center
+    image: r2day/member-center:dev
     depends_on:
       - mini_redis_app
     volumes:
@@ -169,7 +169,7 @@ services:
       - share-network
   pay_app:
     container_name: pay_app
-    image: r2day/pay-api
+    image: r2day/pay-api:dev
     depends_on:
       - mini_member_app
     volumes:
@@ -198,7 +198,7 @@ services:
         #      - share-network
   take_out_app:
     container_name: take_out_app
-    image: r2day/take-out
+    image: r2day/take-out:dev
     depends_on:
       - mini_redis_app
     volumes:
@@ -215,7 +215,7 @@ services:
    # 登陆/用户信息
   manage_auth_app:
     container_name: manage_auth_app
-    image: r2day/auth-api
+    image: r2day/auth-api:dev
     depends_on:
       - mini_mongo_app
     volumes:
