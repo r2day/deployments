@@ -38,51 +38,51 @@ services:
       - share-network
 
   # 登陆/用户信息
-  mini_member_app:
-    container_name: mini_member_app
-    image: r2day/mini-member-api
-    depends_on:
-      - mini_redis_app
-    volumes:
-      - ./config/member.env:/app/.env
-    working_dir: "/app/"
-    restart: on-failure:5
-
-    # 需要使用到该数据库的都需要声明这个网络
-    networks:
-      - share-network
-
-  # 登陆/用户信息
-  mini_appearance_app:
-    container_name: mini_appearance_app
-    image: r2day/mini-appearance-api
-    depends_on:
-      - mini_redis_app
-    volumes:
-      - ./config/appearance.env:/app/.env
-      - ./data/bbs.json:/app/api/bbs/example.json
-    working_dir: "/app/"
-    restart: on-failure:5
-
-    # 需要使用到该数据库的都需要声明这个网络
-    networks:
-      - share-network
+#  mini_member_app:
+#    container_name: mini_member_app
+#    image: r2day/mini-member-api
+#    depends_on:
+#      - mini_redis_app
+#    volumes:
+#      - ./config/member.env:/app/.env
+#    working_dir: "/app/"
+#    restart: on-failure:5
+#
+#    # 需要使用到该数据库的都需要声明这个网络
+#    networks:
+#      - share-network
 
   # 登陆/用户信息
-  mini_store_app:
-    container_name: mini_store_app
-    image: r2day/mini-store-api
-    depends_on:
-      - mini_redis_app
-    volumes:
-      - ./config/store.env:/app/.env
-      - ./data/store.json:/app/api/info/example.json
-    working_dir: "/app/"
-    restart: on-failure:5
+#  mini_appearance_app:
+#    container_name: mini_appearance_app
+#    image: r2day/mini-appearance-api
+#    depends_on:
+#      - mini_redis_app
+#    volumes:
+#      - ./config/appearance.env:/app/.env
+#      - ./data/bbs.json:/app/api/bbs/example.json
+#    working_dir: "/app/"
+#    restart: on-failure:5
+#
+#    # 需要使用到该数据库的都需要声明这个网络
+#    networks:
+#      - share-network
 
-    # 需要使用到该数据库的都需要声明这个网络
-    networks:
-      - share-network
+  # 登陆/用户信息
+#  mini_store_app:
+#    container_name: mini_store_app
+#    image: r2day/mini-store-api
+#    depends_on:
+#      - mini_redis_app
+#    volumes:
+#      - ./config/store.env:/app/.env
+#      - ./data/store.json:/app/api/info/example.json
+#    working_dir: "/app/"
+#    restart: on-failure:5
+#
+#    # 需要使用到该数据库的都需要声明这个网络
+#    networks:
+#      - share-network
 
   store_center_app:
     container_name: store_center_app
@@ -124,19 +124,19 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
-  manage_product_center_app:
-    container_name: manage_product_center_app
-    image: r2day/product-center
-    depends_on:
-      - mini_redis_app
-    volumes:
-      - ./config/manage_product.env:/app/.env
-    working_dir: "/app/"
-    restart: on-failure:5
-
-    # 需要使用到该数据库的都需要声明这个网络
-    networks:
-      - share-network
+#  manage_product_center_app:
+#    container_name: manage_product_center_app
+#    image: r2day/product-center
+#    depends_on:
+#      - mini_redis_app
+#    volumes:
+#      - ./config/manage_product.env:/app/.env
+#    working_dir: "/app/"
+#    restart: on-failure:5
+#
+#    # 需要使用到该数据库的都需要声明这个网络
+#    networks:
+#      - share-network
 
 
   order_center_app:
@@ -227,12 +227,12 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
-  manager_desk_app:
-    container_name: manager_desk_app
-    image: r2day/manager-desk
-    # 需要使用到该数据库的都需要声明这个网络
-    networks:
-      - share-network
+#  manager_desk_app:
+#    container_name: manager_desk_app
+#    image: r2day/manager-desk
+#    # 需要使用到该数据库的都需要声明这个网络
+#    networks:
+#      - share-network
 
   mini_nginx_app:
     container_name: mini_nginx_app
