@@ -170,8 +170,8 @@ services:
   pay_app:
     container_name: pay_app
     image: r2day/pay-api:pro
-    depends_on:
-      - mini_member_app
+#    depends_on:
+#      - mini_member_app
     volumes:
       - ./config/pay.env:/app/.env
       - ./config/apiclient_key.pem:/app/config/apiclient_key.pem
