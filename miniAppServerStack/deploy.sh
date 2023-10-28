@@ -1,10 +1,10 @@
 #! /bin/bash
 
 # 传参
-repo="$1"
-project="$2"
-tag="$3"
-serviceName="$4"
+repo="$1" # r2day
+project="$2"  # 项目名称
+tag="$3" # dev、pro
+serviceName="$4" # 容器名称
 
 # 默认拉取最新镜像
 if [ "$tag" = "" ] ; then
