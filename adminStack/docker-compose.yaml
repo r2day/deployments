@@ -1,0 +1,76 @@
+version: '3.9'
+
+services:
+  manage_store_center_app:
+    container_name: manage_store_center_app
+    image: r2day/store-center:dev
+    volumes:
+      - ./config/manage_store.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  manage_product_center_app:
+    container_name: manage_product_center_app
+    image: r2day/product-center
+    volumes:
+      - ./config/manage_product.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  manage_member_center_app:
+    container_name: manage_member_center_app
+    image: r2day/member-center:dev
+    volumes:
+      - ./config/member_center.env:/app/.env
+      - ./logs/member/:/app/log/
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+  manage_auth_app:
+    container_name: manage_auth_app
+    image: r2day/auth-api:dev
+    volumes:
+      - ./config/auth.env:/app/.env
+      - ./config/init-data:/app/prepare
+    working_dir: "/app/"
+    restart: always
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+  manager_desk_app:
+    container_name: manager_desk_app
+    image: r2day/manager-desk
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+  manage_nginx_app:
+    container_name: manage_nginx_app
+    image: nginx:1.22.1
+    ports:
+      - "5590:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - /etc/localtime:/etc/localtime:ro
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
+# 同一个docker-compose.yaml 只需要在末尾声明一次即可
+networks:
+  share-network:
+    name: share-network
+
