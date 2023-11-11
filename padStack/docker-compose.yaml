@@ -14,13 +14,25 @@ services:
     networks:
       - share-network
 
+  pad_auth_app:
+    container_name: pad_auth_app
+    image: r2day/auth-api:dev
+    volumes:
+      - ./config/auth.env:/app/.env
+      - ./config/init-data:/app/prepare
+    working_dir: "/app/"
+    restart: always
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
   pad_app:
     container_name: pad_app
     image: r2day/work-pad
     ports:
       - "8000:8000"
     depends_on:
-      - order_center_app
+      - order_center_pad
     volumes:
       - ./config/pad.env:/app/.env
     working_dir: "/app/"
@@ -42,4 +54,9 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
+
+# 同一个docker-compose.yaml 只需要在末尾声明一次即可
+networks:
+  share-network:
+    name: share-network
 
