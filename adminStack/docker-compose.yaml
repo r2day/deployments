@@ -1,6 +1,18 @@
 version: '3.9'
 
 services:
+  dashboard_app:
+    container_name: dashboard_app
+    image: r2day/dashboard-api
+    volumes:
+      - ./config/dashboard.env:/app/.env
+    working_dir: "/app/"
+    restart: on-failure:5
+
+    # 需要使用到该数据库的都需要声明这个网络
+    networks:
+      - share-network
+
   manage_store_center_app:
     container_name: manage_store_center_app
     image: r2day/store-center:dev
@@ -15,7 +27,7 @@ services:
 
   manage_product_center_app:
     container_name: manage_product_center_app
-    image: r2day/product-center
+    image: r2day/product-center:pro
     volumes:
       - ./config/manage_product.env:/app/.env
     working_dir: "/app/"
@@ -41,8 +53,14 @@ services:
     container_name: manage_auth_app
     image: r2day/auth-api:dev
     volumes:
-      - ./config/auth.env:/app/.env
       - ./config/init-data:/app/prepare
+    environment:
+      - NACOS_GROUP=dev
+      - NACOS_HOST=nacos.r2day.club
+      - NACOS_NAMESPACE=public
+      - NACOS_PASSWORD=openNACOS123!@#
+      - NACOS_PORT=80
+      - NACOS_USERNAME=r2
     working_dir: "/app/"
     restart: always
 

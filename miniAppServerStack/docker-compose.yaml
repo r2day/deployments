@@ -87,7 +87,7 @@ services:
     working_dir: "/app/"
     restart: on-failure:5
     ports:
-      - "31115:8080"
+      - "31111:8080"
 
     # 需要使用到该数据库的都需要声明这个网络
     networks:
