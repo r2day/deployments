@@ -18,7 +18,7 @@ services:
     image: r2day/store-center:dev
     volumes:
       - ./config/manage_store.env:/app/.env
-      - ../image:/app/bin/image
+      - ../image:/image
     working_dir: "/app/"
     restart: on-failure:5
 
