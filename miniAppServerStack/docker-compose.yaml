@@ -108,6 +108,7 @@ services:
     container_name: fileserver
     image: r2day/fileserver
     volumes:
+      - ./config/fileserver.env:/app/.env
       - ./public:/app/public
     working_dir: "/app/"
     restart: on-failure:5
