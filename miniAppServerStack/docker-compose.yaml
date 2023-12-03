@@ -113,8 +113,7 @@ services:
       - ./templates:/app/templates
     working_dir: "/app/"
     restart: on-failure:5
-    ports:
-      - "18077:8077"
+
 # 同一个docker-compose.yaml 只需要在末尾声明一次即可
 networks:
   share-network:
