@@ -110,6 +110,7 @@ services:
     volumes:
       - ./config/fileserver.env:/app/.env
       - ./public:/app/public
+      - ./templates:/app/templates
     working_dir: "/app/"
     restart: on-failure:5
     ports:
