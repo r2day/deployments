@@ -14,13 +14,9 @@ services:
     networks:
       - share-network
 
-  product_center_app:
-    container_name: product_center_app
-    image: r2day/product-center:dev
-
   store_center_app:
     container_name: store_center_app
-    image: r2day/store-center:dev
+    image: r2day/store-center:pro
     volumes:
       - ./config/store_center.env:/app/.env
       - ../image:/app/image
@@ -33,7 +29,7 @@ services:
 
   product_center_app:
     container_name: product_center_app
-    image: r2day/product-center:dev
+    image: r2day/product-center:pro
     volumes:
       - ./config/product_center.env:/app/.env
     working_dir: "/app/"
@@ -108,7 +104,15 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
-
+  fileserver:
+    container_name: fileserver
+    image: r2day/fileserver
+    volumes:
+      - ./public:/app/public
+    working_dir: "/app/"
+    restart: on-failure:5
+    ports:
+            - "18077:8077"`
 # 同一个docker-compose.yaml 只需要在末尾声明一次即可
 networks:
   share-network:
