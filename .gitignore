@@ -3,3 +3,4 @@ dump.rdb
 mongodb-data
 miniAppServerStack/logs
 .idea
+miniAppServerStack/*.log

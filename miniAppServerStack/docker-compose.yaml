@@ -14,13 +14,9 @@ services:
     networks:
       - share-network
 
-#  product_center_app:
-#    container_name: product_center_app
-#    image: r2day/product-center:dev
-
   store_center_app:
     container_name: store_center_app
-    image: r2day/store-center:dev
+    image: r2day/store-center:pro
     volumes:
       - ./config/store_center.env:/app/.env
       - ../image:/app/image
@@ -33,7 +29,7 @@ services:
 
   product_center_app:
     container_name: product_center_app
-    image: r2day/product-center:dev
+    image: r2day/product-center:pro
     volumes:
       - ./config/product_center.env:/app/.env
     working_dir: "/app/"
@@ -88,7 +84,7 @@ services:
     working_dir: "/app/"
     restart: on-failure:5
     ports:
-      - "31115:8080"
+      - "31111:8080"
 
     # 需要使用到该数据库的都需要声明这个网络
     networks:

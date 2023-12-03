@@ -7,7 +7,7 @@ services:
     image: redis:6.2-alpine
     restart: always
     ports:
-      - '26379:6379'
+      - '16379:6379'
     command: redis-server --save 20 1
     volumes:
       - ./cache:/data
@@ -20,7 +20,7 @@ services:
     depends_on:
       - mini_redis_app
     ports:
-      - "47077:27017"
+      - "17077:27017"
     volumes:
       - ./mongodb-data:/data/db
       - /etc/localtime:/etc/localtime:ro
