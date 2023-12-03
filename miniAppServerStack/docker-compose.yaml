@@ -113,6 +113,8 @@ services:
       - ./templates:/app/templates
     working_dir: "/app/"
     restart: on-failure:5
+    networks:
+      - share-network
 
 # 同一个docker-compose.yaml 只需要在末尾声明一次即可
 networks:
