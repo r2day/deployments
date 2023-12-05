@@ -109,7 +109,7 @@ services:
     image: r2day/fileserver
     volumes:
       - ./config/fileserver.env:/app/.env
-      - ./public:/app/public
+      - ../public:/app/public
       - ./templates:/app/templates
     working_dir: "/app/"
     restart: on-failure:5
