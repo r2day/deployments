@@ -248,6 +248,17 @@ services:
     # 需要使用到该数据库的都需要声明这个网络
     networks:
       - share-network
+  fileserver:
+    container_name: fileserver
+    image: r2day/fileserver
+    volumes:
+      - ./config/fileserver.env:/app/.env
+      - ../public:/app/public
+      - ./templates:/app/templates
+    working_dir: "/app/"
+    restart: on-failure:5
+    networks:
+      - share-network
 
 # 同一个docker-compose.yaml 只需要在末尾声明一次即可
 networks:
